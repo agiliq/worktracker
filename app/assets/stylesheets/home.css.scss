@@ -7,13 +7,36 @@
 
 #left_container {
     float:left;
-    width:300px;
+    width:315px;
     background-color:#ffffee;
-    border-right: 1px solid red;
+  /*  border-right: 1px solid red; */
+}
+
+#users_list {
+    width: 266px;
+    border: 3px solid #E4D8D8;
+    margin-top: 239px;
+    border-radius: 7px;
+    display: none;
+}
+
+.user_info{
+    line-height: 42px;
+    display: block;
+    border-bottom: 2px solid #E9DADA;
+    padding-left: 10px;
+}
+
+.profile_pic {
+    width: 44px;
+    height:42px;
+    float: right;
+    border-radius: 30px;
+
 }
 
 #right_container {
-    margin-left: 300px;
+    margin-left: 315px;
     width: 100%;
     min-height: 700px;
 
