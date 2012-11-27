@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript">
+  $(function() {
+    // Worksummarizer is the app name
+    window.router = new Worksummarizer.Routers.HomeRouter();
+    Backbone.history.start();
+  });
+</script>
+
+<div id='container'>
+    <div id='left_container'>
+        <div id="mycalendar"></div>
+    </div>
+    <div id='right_container'>
+        <div id='ajax_header'></div>
+        <div id='ajax_content'>
+        </div>
+    </div>
+</div>
+<div id='loading_div'>
+    Loading...
+</div>
+
+</body>
+</html>

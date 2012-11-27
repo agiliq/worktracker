@@ -1,0 +1,33 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#container {
+
+}
+
+#left_container {
+    float:left;
+    width:300px;
+    background-color:#ffffee;
+    border-right: 1px solid red;
+}
+
+#right_container {
+    margin-left: 300px;
+    width: 100%;
+    min-height: 700px;
+
+}
+
+#loading_div{
+    position: fixed;
+    top: 0px;
+    left:48%;
+    width: 87px;
+    height: 28px;
+    background-color: #00C2FF;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: none;
+}
