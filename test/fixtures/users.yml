@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  assembla_id: MyString
+  login: MyString
+  name: MyString
+  email: MyString
+  organization: MyString
+  string: MyString
+  phone: MyString
+  picture: MyString
+
+two:
+  assembla_id: MyString
+  login: MyString
+  name: MyString
+  email: MyString
+  organization: MyString
+  string: MyString
+  phone: MyString
+  picture: MyString

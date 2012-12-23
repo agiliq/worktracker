@@ -18,3 +18,4 @@
 //= require backbone_datalink
 //= require backbone/worksummarizer
 //= require_tree .
+//= require jquery.ui.all

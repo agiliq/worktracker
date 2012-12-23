@@ -1,16 +1,35 @@
 <html>
 <head>
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" type='text/css' />
 </head>
 <body>
+
 <script type="text/javascript">
   $(function() {
     // Worksummarizer is the app name
     window.router = new Worksummarizer.Routers.HomeRouter();
     Backbone.history.start();
+
+    //$("#selected_date").datepicker();
+    $("#mycalendar").datepicker({
+        onSelect: function(date_text, obj){
+            commits_view = new Worksummarizer.Views.Home.CommitsView({'date':date_text, el: $('#ajax_content')})
+        },
+        dateFormat: 'yy-mm-dd'
+        });
   });
 </script>
 
 <div id='container'>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Agiliq WorkSummrizer</a>
+    <ul class="nav">
+      <li class="commits"><a >Commits</a></li>
+      <li><a class='tickets active' >Tickets</a></li>
+    </ul>
+  </div>
+</div>
     <div id='left_container'>
         <div id="mycalendar"></div>
         <div id="users_list"></div>
@@ -24,6 +43,12 @@
 <div id='loading_div'>
     Loading...
 </div>
+
+
+
+<!-- templates -->
+
+<!-- end of templates -->
 
 </body>
 </html>

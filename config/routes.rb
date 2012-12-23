@@ -2,6 +2,7 @@ Worksummarizer::Application.routes.draw do
     match "/" => "home#index"
     get "home/commits"
     get "home/users"
+    get "home/tickets"
 
 # The priority is based upon order of creation:
 # first created -> highest priority.

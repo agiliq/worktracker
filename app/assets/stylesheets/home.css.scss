@@ -8,14 +8,14 @@
 #left_container {
     float:left;
     width:315px;
-    background-color:#ffffee;
+    margin-left: 10px;
   /*  border-right: 1px solid red; */
 }
 
 #users_list {
     width: 266px;
     border: 3px solid #E4D8D8;
-    margin-top: 239px;
+    margin-top: 20px;
     border-radius: 7px;
     display: none;
 }
@@ -26,6 +26,8 @@
     border-bottom: 2px solid #E9DADA;
     padding-left: 10px;
 }
+
+.user_info.active { background-color: #CF720D; color: white; }
 
 .profile_pic {
     width: 44px;
@@ -70,3 +72,15 @@
 .row_info {
     border-bottom: 1px solid #C5B7B7;
 }
+
+.nav a{
+    cursor: pointer;
+}
+
+
+.ticket_status { color: red; }
+.ticket_summary {color: #4D22D6; font-weight: bold; }
+.ticket_desc { margin-left: 30px; color: #888809; }
+.space_name { font-size: 14pt; text-decoration: underline; color: #E000FF;}
+.each_user_tickets { border: 1px solid #E0D6D6; width: 70%; border-radius: 10px; padding: 15px; }
+
