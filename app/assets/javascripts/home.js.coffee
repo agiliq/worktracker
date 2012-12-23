@@ -28,6 +28,11 @@ $(".tickets").live
   click: (e) ->
     @view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
     #$("#ajax_content").html @view.render().el
+    
+
+$(".commits").live
+  click: (e) ->
+    @view = new Worksummarizer.Views.Home.CommitsView({el: $('#ajax_content')})
 
 $(".nav li").live
   click: () ->
