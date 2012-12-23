@@ -11,14 +11,12 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
 
   toggle_desc_all: ->
     if $(".cb_desc").attr "checked"
-      $(".ticket_desc").show()
+      $(".ticket_desc").slideDown()
     else
-      $(".ticket_desc").hide()
+      $(".ticket_desc").slideUp()
 
   toggle_each_desc: (e) ->
-    $(e.target).closest('.each_ticket').find(".ticket_desc").toggle()
-
-
+    $(e.target).closest('.each_ticket').find(".ticket_desc").slideToggle()
 
 
   render: ->
