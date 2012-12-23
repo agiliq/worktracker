@@ -36,12 +36,18 @@ $(".nav li").live
 
 $(".user_info").live
   click: (e) ->
-    $(@).toggleClass("active")
+    check_active_user_content(@)
+
+
+
+check_active_user_content = (that)->
+    if that 
+      $(that).toggleClass("active")
     if $(".user_info.active").length == 0 
       $(".user_tickets").show()
+      $(".user_commits").show()
     else
       $(".user_tickets").hide()
+      $(".user_commits").hide()
       for key in $(".user_info.active")
         $('.'+$(key).attr('assembla_id')).show()
-
-

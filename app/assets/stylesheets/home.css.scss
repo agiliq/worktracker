@@ -25,9 +25,12 @@
     display: block;
     border-bottom: 2px solid #E9DADA;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .user_info.active { background-color: #CF720D; color: white; }
+
+.user_commits { border: 1px solid #E0D6D6; width: 70%; border-radius: 10px; }
 
 .profile_pic {
     width: 44px;

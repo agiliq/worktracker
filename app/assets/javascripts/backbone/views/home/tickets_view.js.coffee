@@ -66,6 +66,7 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
 
           html += "</div></div>"
         $(that.el).html html
+        check_active_user_content()
 
           #user_col.each (user) ->
           #  if m.get('assigned_to_id') == null
@@ -80,5 +81,14 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
     return this
 
 
-
-
+check_active_user_content = (that)->
+    if that 
+      $(that).toggleClass("active")
+    if $(".user_info.active").length == 0 
+      $(".user_tickets").show()
+      $(".user_commits").show()
+    else
+      $(".user_tickets").hide()
+      $(".user_commits").hide()
+      for key in $(".user_info.active")
+        $('.'+$(key).attr('assembla_id')).show()
