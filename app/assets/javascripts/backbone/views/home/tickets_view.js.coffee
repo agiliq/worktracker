@@ -2,7 +2,7 @@ Worksummarizer.Views.Home || = {}
 
 class Worksummarizer.Views.Home.TicketsView extends Backbone.View
   initialize: (options) ->
-    console.log "tickets view init"
+    console.log "Tickets view"
     @render()
 
   events: ->
@@ -20,14 +20,12 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
 
 
   render: ->
-    console.log "vew"
+    console.log "tickets renbder"
     that = @
     html = ""
     @tickets = new Worksummarizer.Collections.TicketsCollection()
     @tickets.fetch {
       success: (col, res) ->
-        console.log 'suc'
-        console.log col
 
         html = ""
         unassigned = [] 
@@ -37,16 +35,14 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
 
         col.each (m) ->
           if m.get('assigned_to_id') of user_col
-            console.log "pushing"
             user_col[m.get('assigned_to_id')].push m
-          else
-            console.log "not"
-        console.log user_col
-        window.ti = user_col
+            console.log "--"
 
         html += "<input type='checkbox' class='cb_desc' /> Description"
 
-
+        console.log user_col
+        console.log user_col
+        console.log user_col
         for key, val of user_col
           name_text = $("[assembla_id="+key+"]").text()
           html += "<div class='"+key+" user_tickets'><h2>"+name_text+"</h2><div class='each_user_tickets'>"
@@ -66,10 +62,6 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
         $(that.el).html html
         check_active_user_content()
 
-          #user_col.each (user) ->
-          #  if m.get('assigned_to_id') == null
-          #    unassigned.push m.get('id')
-          #  html += "<h2>"+$('.'+user[]['assigned_to_id']+'')+"</h2>"
 
 
       error: (col, res) ->
