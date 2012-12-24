@@ -64,38 +64,37 @@ class HomeController < ApplicationController
 
         @users = @users.uniq
         @required_users = []
-        if User.all().length == 0
+        #if User.all().length == 0
             #generate and save to db if not already in db
 
-            @users.each do |user|
-                uri = URI("https://api.assembla.com/v1/users/#{user}.json")
-                req = Net::HTTP::Get.new(uri.request_uri)
-                req.add_field 'X-Api-Key', api_key
-                req.add_field 'X-Api-Secret', api_key_secret
-                res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
-                    http.request(req)
-                }
-                res = JSON.parse res.body
-                if res['picture'] == ""
-                    res['picture'] = "/assets/home/no_pic.jpg"
-                end
-                puts res
-                res.delete('im2')
-                res.delete('im')
-                res['assembla_id'] = res['id']
-                res.delete('id')
-                User.new(res).save()
+        @users.each do |user|
+            uri = URI("https://api.assembla.com/v1/users/#{user}.json")
+            req = Net::HTTP::Get.new(uri.request_uri)
+            req.add_field 'X-Api-Key', api_key
+            req.add_field 'X-Api-Secret', api_key_secret
+            res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
+                http.request(req)
+            }
+            res = JSON.parse res.body
+            if res['picture'] == ""
+                res['picture'] = "/assets/home/no_pic.jpg"
+            end
+            puts res
+            res.delete('im2')
+            res.delete('im')
+            res['assembla_id'] = res['id']
+            res.delete('id')
+            #User.new(res).save()
 
-                @required_users += [res]
-            end
-        else
-            puts "---------------from db -------------------"
-            # jst return from db.
-            users = User.all()
-            users.each do |user|
-                @required_users += [user]
-            end
+            @required_users += [res]
         end
+        #else
+        #    puts "---------------from db -------------------"
+        #    # jst return from db.
+        #    users = User.all()
+        #    users.each do |user|
+        #        @required_users += [user]
+        #    end
 
 
 

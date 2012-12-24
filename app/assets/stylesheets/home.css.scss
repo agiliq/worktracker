@@ -17,15 +17,20 @@
     border: 3px solid #E4D8D8;
     margin-top: 20px;
     border-radius: 7px;
-    display: none;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
 }
 
 .user_info{
     line-height: 42px;
     display: block;
     border-bottom: 2px solid #E9DADA;
-    padding-left: 10px;
     cursor: pointer;
+}
+
+input[type=checkbox] {
+    margin-top: -2px;
 }
 
 .user_info.active { background-color: #CF720D; color: white; border-radius: 3px;}
@@ -83,7 +88,7 @@
 
 .ticket_status { color: red; }
 .ticket_summary {color: #4D22D6; font-weight: bold; }
-.ticket_desc { margin-left: 30px; color: #888809; }
+.ticket_desc { margin-left: 30px; color: #888809; display: none;}
 .space_name { font-size: 14pt; text-decoration: underline; color: #E000FF;}
 .each_user_tickets { border: 1px solid #E0D6D6; width: 70%; border-radius: 10px; padding: 15px; }
 

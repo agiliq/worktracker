@@ -44,7 +44,7 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
         console.log user_col
         window.ti = user_col
 
-        html += "<input type='checkbox' class='cb_desc' checked /> Description"
+        html += "<input type='checkbox' class='cb_desc' /> Description"
 
 
         for key, val of user_col
