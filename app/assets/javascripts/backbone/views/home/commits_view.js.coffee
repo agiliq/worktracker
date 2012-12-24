@@ -3,7 +3,6 @@ Worksummarizer.Views.Home ||= {}
 class Worksummarizer.Views.Home.CommitsView extends Backbone.View
 
   initialize: (options) ->
-    console.log "commits view"
     $(".nav li").removeClass "active"
     $(".commits").addClass "active"
     @options = options

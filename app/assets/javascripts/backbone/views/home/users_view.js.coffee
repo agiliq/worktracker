@@ -2,7 +2,6 @@ Worksummarizer.Views.Home || = {}
 
 class Worksummarizer.Views.Home.UsersView extends Backbone.View
   initialize: (options) ->
-    console.log "Users view"
     @options = options
     #@render()
 
@@ -14,7 +13,6 @@ class Worksummarizer.Views.Home.UsersView extends Backbone.View
       @render()
 
   render: ->
-    console.log "users render"
     users_obj = new Worksummarizer.Collections.UsersCollection()
     that = @
     checked = ''
@@ -27,18 +25,18 @@ class Worksummarizer.Views.Home.UsersView extends Backbone.View
         if localStorage.users_list
           users_list = JSON.parse localStorage.users_list
           if Object.keys(users_list).length > 0
-            console.log "localstorage"
             for key, val of users_list
               $(that.el).append "<span class='user_info' assembla_id='"+val.assembla_id+"'><span>"+val.name+"</span><img src='"+val.picture+"' class='profile_pic img-circle' /></span>"
+            tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
             return @
 
 
     if not $(".cb_fresh_users_list").attr "checked"
       if window.users_collection
         if window.users_collection.length > 0
-          console.log "window"
           window.users_collection.each (m) ->
             $(that.el).append "<span class='user_info' assembla_id='"+m.get('assembla_id')+"'><span>"+m.get('name')+"</span><img src='"+m.get('picture')+"' class='profile_pic img-circle' /></span>"
+          tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
           return @
 
 
@@ -46,7 +44,6 @@ class Worksummarizer.Views.Home.UsersView extends Backbone.View
       window.users_collection = col
       users_list = {}
       i = 0
-      console.log "new fetch"
       col.each (m) ->
         $(that.el).append "<span class='user_info' assembla_id='"+m.get('assembla_id')+"'><span>"+m.get('name')+"</span><img src='"+m.get('picture')+"' class='profile_pic img-circle' /></span>"
         users_list[i] = {}

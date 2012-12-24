@@ -2,7 +2,6 @@ Worksummarizer.Views.Home || = {}
 
 class Worksummarizer.Views.Home.TicketsView extends Backbone.View
   initialize: (options) ->
-    console.log "Tickets view"
     @render()
 
   events: ->
@@ -20,7 +19,6 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
 
 
   render: ->
-    console.log "tickets renbder"
     that = @
     html = ""
     @tickets = new Worksummarizer.Collections.TicketsCollection()
@@ -36,13 +34,9 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
         col.each (m) ->
           if m.get('assigned_to_id') of user_col
             user_col[m.get('assigned_to_id')].push m
-            console.log "--"
 
         html += "<input type='checkbox' class='cb_desc' /> Description"
 
-        console.log user_col
-        console.log user_col
-        console.log user_col
         for key, val of user_col
           name_text = $("[assembla_id="+key+"]").text()
           html += "<div class='"+key+" user_tickets'><h2>"+name_text+"</h2><div class='each_user_tickets'>"
