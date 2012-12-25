@@ -26,7 +26,10 @@ $(document).ajaxStop ->
 
 $(".tickets").live
   click: (e) ->
-    @view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
+    if window.tickets_view
+      tickets_view.render()
+      return
+    window.tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
     #$("#ajax_content").html @view.render().el
     
 
@@ -46,6 +49,7 @@ $(".user_info").live
 
 
 check_active_user_content = (that)->
+    console.log "HOME.js file"
     if that 
       $(that).toggleClass("active")
     if $(".user_info.active").length == 0 

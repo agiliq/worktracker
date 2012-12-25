@@ -10,8 +10,8 @@ class HomeController < ApplicationController
     end
     def commits
         @to = params['date']
-        api_key = "c4b4880d9be58de788fa"
-        api_key_secret = "a6a286adb6a4839606a37afdc46c1f0ae5557f25"
+        api_key = ENV["ASSEMBLA_API_KEY"]
+        api_key_secret = ENV["ASSEMBLA_API_SECRET"]
         uri = URI("https://api.assembla.com/v1/activity.json?to=#{@to}")
         puts uri
         puts @to
@@ -26,16 +26,14 @@ class HomeController < ApplicationController
         puts res
         puts res.body
         @res = res.body
-
-        
         respond_to do |format|
             format.json {render :json => @res }
         end
         
     end
     def users
-        api_key = "c4b4880d9be58de788fa"
-        api_key_secret = "a6a286adb6a4839606a37afdc46c1f0ae5557f25"
+        api_key = ENV["ASSEMBLA_API_KEY"]
+        api_key_secret = ENV["ASSEMBLA_API_SECRET"]
         uri = URI("https://api.assembla.com/v1/spaces.json")
         req = Net::HTTP::Get.new(uri.request_uri)
         req.add_field 'X-Api-Key', api_key
@@ -105,8 +103,8 @@ class HomeController < ApplicationController
     end
 
     def tickets
-        api_key = "c4b4880d9be58de788fa"
-        api_key_secret = "a6a286adb6a4839606a37afdc46c1f0ae5557f25"
+        api_key = ENV["ASSEMBLA_API_KEY"]
+        api_key_secret = ENV["ASSEMBLA_API_SECRET"]
         uri = URI("https://api.assembla.com/v1/spaces.json")
         req = Net::HTTP::Get.new(uri.request_uri)
         req.add_field 'X-Api-Key', api_key

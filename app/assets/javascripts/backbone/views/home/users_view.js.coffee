@@ -27,7 +27,10 @@ class Worksummarizer.Views.Home.UsersView extends Backbone.View
           if Object.keys(users_list).length > 0
             for key, val of users_list
               $(that.el).append "<span class='user_info' assembla_id='"+val.assembla_id+"'><span>"+val.name+"</span><img src='"+val.picture+"' class='profile_pic img-circle' /></span>"
-            tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
+            if window.tickets_view
+              window.tickets_view.render()
+            else
+              window.tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
             return @
 
 
@@ -36,7 +39,10 @@ class Worksummarizer.Views.Home.UsersView extends Backbone.View
         if window.users_collection.length > 0
           window.users_collection.each (m) ->
             $(that.el).append "<span class='user_info' assembla_id='"+m.get('assembla_id')+"'><span>"+m.get('name')+"</span><img src='"+m.get('picture')+"' class='profile_pic img-circle' /></span>"
-          tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
+          if window.tickets_view
+            window.tickets_view.render()
+          else
+            window.tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
           return @
 
 
@@ -53,7 +59,10 @@ class Worksummarizer.Views.Home.UsersView extends Backbone.View
         i++
       localStorage.users_list = JSON.stringify users_list
 
-      tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
+      if window.tickets_view
+        window.tickets_view.render()
+      else
+        window.tickets_view = new Worksummarizer.Views.Home.TicketsView({el: $('#ajax_content')})
     , err: (col, res) ->
         console.log res
         console.log "err"
