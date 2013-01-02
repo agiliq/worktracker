@@ -29,3 +29,11 @@ In progress
 
 1. Github
 2. Idonethis
+
+###Usage:
+
+    export ASSEMBLA_API_KEY=''
+    export ASSEMBLA_API_SECRET=''
+    
+Put the above two lines in the bashrc file with approapriate values.
+
