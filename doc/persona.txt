@@ -1,0 +1,21 @@
+Shabda is attached to multiple projects. He wants to know who has too much work assigned to him and who has too little. He wants to know who got what done on day X.
+
+He wants to see commits across everything rolled up at one place.
+
+Things Shabda should be able to quickly do
+
+1. See what tickets Shabda has to respond to.
+2. See what tickets Bhaskar has to respond to.
+3. See what things Shabda got done yesterday - commits.
+4. See what things Bhaskar got done yesterday - commits.
+
+These things should be possible to do - but not primary use case.
+
+1. List tickets which got closed in yesterday, last week.
+2. Commits in last week.
+
+Bhaskar is primarily working with a single project, but has secondary resposibilities in other projects. He should be able to quickly see.
+
+1. What is his most recently opened ticket
+2. What is the oldest ticket assigned to him
+3. List of commits by him today - for transferring to idonethis.
