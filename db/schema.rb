@@ -11,19 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209190050) do
+ActiveRecord::Schema.define(:version => 20130102194604) do
 
   create_table "users", :force => true do |t|
-    t.string   "assembla_id"
-    t.string   "login"
-    t.string   "name"
     t.string   "email"
-    t.string   "organization"
-    t.string   "string"
-    t.string   "phone"
-    t.string   "picture"
+    t.string   "omniauth_uid", :null => false
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["omniauth_uid"], :name => "index_users_on_omniauth_uid", :unique => true
 
 end

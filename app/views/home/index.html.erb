@@ -28,6 +28,17 @@
       <li class="commits"><a >Commits</a></li>
       <li class='tickets active'><a  >Tickets</a></li>
     </ul>
+    <ul class='nav pull-right'>
+      <li class='logout_nav'>
+          <a >Welcome <%= current_user.email %></a>
+        <div class='logout_hover_links'>
+            <ul>
+                <li><a href='logout'>Logout</a></li>
+            </ul>
+        </div>
+
+      </li>
+    </ul>
   </div>
 </div>
     <div id='left_container'>

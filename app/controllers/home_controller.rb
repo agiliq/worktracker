@@ -8,6 +8,19 @@ class HomeController < ApplicationController
         end
 
     end
+
+    def login
+        respond_to do |format|
+            format.html
+        end
+    end
+
+    def logout
+        session.delete('warden.user.user.key')
+
+        redirect_to '/'
+    end
+
     def commits
         @to = params['date']
         api_key = ENV["ASSEMBLA_API_KEY"]

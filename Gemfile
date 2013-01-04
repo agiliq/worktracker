@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'rails-backbone'
 gem 'jquery-ui-rails'
 gem 'thin'
+gem 'google_authentication'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

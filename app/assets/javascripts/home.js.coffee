@@ -18,6 +18,11 @@
 #    $("#ajax_content").html @view.render().el
 #    #alert "a date was just selected and the date is : " + obj.day + "/" + obj.month + "/" + obj.year
 
+
+$(document).ready ->
+  $(".logout_hover_links").css("width", $(".logout_nav").css("width"))
+
+
 $(document).ajaxStart ->
   $("#loading_div").slideDown()
 $(document).ajaxStop ->
@@ -60,3 +65,9 @@ check_active_user_content = (that)->
       $(".user_commits").hide()
       for key in $(".user_info.active")
         $('.'+$(key).attr('assembla_id')).show()
+
+$(".logout_nav").live
+  mouseenter: ->
+    $(".logout_hover_links").show()
+  mouseleave: ->
+    $(".logout_hover_links").hide()

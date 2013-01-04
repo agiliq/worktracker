@@ -1,5 +1,7 @@
 Worksummarizer::Application.routes.draw do
     match "/" => "home#index"
+    match "/login" => "home#login"
+    match "/logout" => "home#logout"
     get "home/commits"
     get "home/users"
     get "home/tickets"
