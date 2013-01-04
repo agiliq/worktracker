@@ -26,8 +26,6 @@ class HomeController < ApplicationController
         api_key = ENV["ASSEMBLA_API_KEY"]
         api_key_secret = ENV["ASSEMBLA_API_SECRET"]
         uri = URI("https://api.assembla.com/v1/activity.json?to=#{@to}")
-        puts uri
-        puts @to
         #uri = URI("https://api.assembla.com/v1/activity.json")
         req = Net::HTTP::Get.new(uri.request_uri)
         req.add_field 'X-Api-Key', api_key
@@ -35,9 +33,6 @@ class HomeController < ApplicationController
         res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
             http.request(req)
         }
-        puts "-------------------res----------------"
-        puts res
-        puts res.body
         @res = res.body
         respond_to do |format|
             format.json {render :json => @res }
@@ -90,7 +85,6 @@ class HomeController < ApplicationController
             if res['picture'] == ""
                 res['picture'] = "/assets/home/no_pic.jpg"
             end
-            puts res
             res.delete('im2')
             res.delete('im')
             res['assembla_id'] = res['id']
@@ -138,11 +132,13 @@ class HomeController < ApplicationController
             res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
                 http.request(req)
             }
-            res = JSON.parse res.body
-            res.each do |eachticket|
-                eachticket['space_name'] = space['name']
-                @tickets.push eachticket
-            end    
+            if res.class == Net::HTTPOK
+                res = JSON.parse res.body
+                res.each do |eachticket|
+                    eachticket['space_name'] = space['name']
+                    @tickets.push eachticket
+                end    
+            end
 
         end
 
