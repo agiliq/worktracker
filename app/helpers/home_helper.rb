@@ -18,7 +18,7 @@ module HomeHelper
         if res.class == Net::HTTPOK
             return res.body
         else
-            return ""
+            return "{}"
         end
     end
 
