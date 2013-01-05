@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
             redirect_to '/'
         end
     else
-        if request.fullpath != '/login'
+        if request.fullpath != '/login' and request.fullpath != '/users/auth/google_apps/callback'
             redirect_to '/login'
         end
 
