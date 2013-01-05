@@ -2,6 +2,7 @@ require 'net/http'
 require 'json'
 
 class HomeController < ApplicationController
+    include HomeHelper
     def index
         respond_to do |format|
             format.html
@@ -23,17 +24,8 @@ class HomeController < ApplicationController
 
     def commits
         @to = params['date']
-        api_key = ENV["ASSEMBLA_API_KEY"]
-        api_key_secret = ENV["ASSEMBLA_API_SECRET"]
-        uri = URI("https://api.assembla.com/v1/activity.json?to=#{@to}")
-        #uri = URI("https://api.assembla.com/v1/activity.json")
-        req = Net::HTTP::Get.new(uri.request_uri)
-        req.add_field 'X-Api-Key', api_key
-        req.add_field 'X-Api-Secret', api_key_secret
-        res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
-            http.request(req)
-        }
-        @res = res.body
+        res = get_commits_assembla(@to)
+        @res = res
         respond_to do |format|
             format.json {render :json => @res }
         end
