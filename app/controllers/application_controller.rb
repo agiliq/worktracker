@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
             redirect_to '/'
         end
     else
-        if request.fullpath == '/'
+        if request.fullpath != '/login'
             redirect_to '/login'
         end
 
