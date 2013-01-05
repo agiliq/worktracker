@@ -128,11 +128,12 @@ input[type=checkbox] {
     padding: 77px;
     border-radius: 35px;
     background-color: red;
-    background-image: -moz-linear-gradient(top, #FF00F5, white);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, #FF00F5, white);
-    background-image: -webkit-linear-gradient(top, #FF00F5, white);
-    background-image: -o-linear-gradient(top, #FF00F5, white);
-    background-image: linear-gradient(to bottom, white, #FF00F5);
+    background-image: -moz-linear-gradient(top, black, white);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, black, white);
+    background-image: -webkit-linear-gradient(top, black, white);
+    background-image: -o-linear-gradient(top, black, white);
+    background-image: linear-gradient(to bottom, white, black);
+    box-shadow: inset 0px 0px 85px #3C2638;
 }
 
 .login_button a{
