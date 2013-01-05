@@ -34,6 +34,7 @@ In progress
 
     export ASSEMBLA_API_KEY=''
     export ASSEMBLA_API_SECRET=''
+    export WORKTRACKER_AUTH_DOMAIN=''  Ex: agiliq.com
     
 Put the above two lines in the bashrc file with approapriate values.
 
