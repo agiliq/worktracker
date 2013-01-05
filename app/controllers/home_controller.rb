@@ -102,38 +102,7 @@ class HomeController < ApplicationController
     end
 
     def tickets
-        api_key = ENV["ASSEMBLA_API_KEY"]
-        api_key_secret = ENV["ASSEMBLA_API_SECRET"]
-        uri = URI("https://api.assembla.com/v1/spaces.json")
-        req = Net::HTTP::Get.new(uri.request_uri)
-        req.add_field 'X-Api-Key', api_key
-        req.add_field 'X-Api-Secret', api_key_secret
-        res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
-            http.request(req)
-        }
-        @spaces = JSON.parse res.body
-        @space_ids = []
-        @users = []
-        @tickets = []
-        @spaces.each do |space|
-            @space_ids += [space['id']]
-            uri = URI("https://api.assembla.com/v1/spaces/#{space['id']}/tickets.json")
-            req = Net::HTTP::Get.new(uri.request_uri)
-            req.add_field 'X-Api-Key', api_key
-            req.add_field 'X-Api-Secret', api_key_secret
-            res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
-                http.request(req)
-            }
-            if res.class == Net::HTTPOK
-                res = JSON.parse res.body
-                res.each do |eachticket|
-                    eachticket['space_name'] = space['name']
-                    @tickets.push eachticket
-                end    
-            end
-
-        end
-
+        @tickets = get_tickets_assembla 
         respond_to do |format|
             format.json {render :json => @tickets}
         end

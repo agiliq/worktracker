@@ -2,7 +2,6 @@ module HomeHelper
     def get_commits_assembla(date)
         url = "https://api.assembla.com/v1/activity.json?to=#{date}"
         res = get_from_api url
-        res.body
 
     end
 
@@ -16,6 +15,35 @@ module HomeHelper
         res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == 'https') { |http|
             http.request(req)
         }
-        res
+        if res.class == Net::HTTPOK
+            return res.body
+        else
+            return ""
+        end
+    end
+
+    def get_tickets_assembla()
+        url = "https://api.assembla.com/v1/spaces.json"
+        res = get_from_api url
+        @spaces = JSON.parse res
+        @space_ids = []
+        @users = []
+        @tickets = []
+        @spaces.each do |space|
+            @space_ids += [space['id']]
+            url = "https://api.assembla.com/v1/spaces/#{space['id']}/tickets.json"
+            res = get_from_api url
+            if res != ""
+                res = JSON.parse res
+                res.each do |eachticket|
+                    eachticket['space_name'] = space['name']
+                    @tickets.push eachticket
+                end    
+            end
+
+        end
+        @tickets
+
+
     end
 end
