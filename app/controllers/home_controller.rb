@@ -35,14 +35,14 @@ class HomeController < ApplicationController
 
     def users
         url = "https://api.assembla.com/v1/spaces.json"
-        res = get_from_api url
+        res = get_from_api url, 'ASSEMBLA'
         @spaces = JSON.parse res
         @space_ids = []
         @users = []
         @spaces.each do |space|
             @space_ids += [space['id']]
             url = "https://api.assembla.com/v1/spaces/#{space['id']}/user_roles.json"
-            res = get_from_api url
+            res = get_from_api url, 'ASSEMBLA'
             res = JSON.parse res
             res.each do |user_role|
                 @users += [user_role['user_id']]
@@ -57,7 +57,7 @@ class HomeController < ApplicationController
 
         @users.each do |user|
             url = "https://api.assembla.com/v1/users/#{user}.json"
-            res = get_from_api url
+            res = get_from_api url, 'ASSEMBLA'
             res = JSON.parse res
             if res['picture'] == ""
                 res['picture'] = "/assets/home/no_pic.jpg"

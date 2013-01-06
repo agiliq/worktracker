@@ -1,13 +1,13 @@
 module HomeHelper
     def get_commits_assembla(date)
         url = "https://api.assembla.com/v1/activity.json?to=#{date}"
-        res = get_from_api url
+        res = get_from_api url, 'ASSEMBLA'
 
     end
 
-    def get_from_api(url)
-        api_key = ENV["ASSEMBLA_API_KEY"]
-        api_key_secret = ENV["ASSEMBLA_API_SECRET"]
+    def get_from_api(url, api_provider)
+        api_key = ENV[api_provider+"_API_KEY"]
+        api_key_secret = ENV[api_provider+"_API_SECRET"]
         uri = URI(url)
         req = Net::HTTP::Get.new(uri.request_uri)
         req.add_field 'X-Api-Key', api_key
@@ -24,7 +24,7 @@ module HomeHelper
 
     def get_tickets_assembla()
         url = "https://api.assembla.com/v1/spaces.json"
-        res = get_from_api url
+        res = get_from_api url, 'ASSEMBLA'
         @spaces = JSON.parse res
         @space_ids = []
         @users = []
@@ -32,7 +32,7 @@ module HomeHelper
         @spaces.each do |space|
             @space_ids += [space['id']]
             url = "https://api.assembla.com/v1/spaces/#{space['id']}/tickets.json"
-            res = get_from_api url
+            res = get_from_api url, 'ASSEMBLA'
             if res != ""
                 res = JSON.parse res
                 res.each do |eachticket|
