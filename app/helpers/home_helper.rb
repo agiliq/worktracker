@@ -33,13 +33,11 @@ module HomeHelper
             @space_ids += [space['id']]
             url = "https://api.assembla.com/v1/spaces/#{space['id']}/tickets.json"
             res = get_from_api url, 'ASSEMBLA'
-            if res != ""
-                res = JSON.parse res
-                res.each do |eachticket|
-                    eachticket['space_name'] = space['name']
-                    @tickets.push eachticket
-                end    
-            end
+            res = JSON.parse res
+            res.each do |eachticket|
+                eachticket['space_name'] = space['name']
+                @tickets.push eachticket
+            end    
 
         end
         @tickets
