@@ -11,14 +11,6 @@ class Worksummarizer.Collections.CommitsCollection extends Backbone.Collection
     @options.date = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
   model: Worksummarizer.Models.Commit
   url: ->
-    #@myday = new Date()
-    #@myday.setFullYear @options.year
-    #@myday.setMonth @options.month
-    #@myday.setDate @options.day+1
-
-    #console.log "/home/commits?date=#{@myday.getFullYear()}-#{@myday.getMonth()}-#{@myday.getDate()}"
-    #"/home/commits?date=#{@myday.getFullYear()}-#{@myday.getMonth()}-#{@myday.getDate()}"
-    console.log "/home/commits?date=#{@options.date}"
     "/home/commits?date=#{@options.date}"
   comparator: (item) ->
     item.get 'author_name'

@@ -15,7 +15,6 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
       $(".ticket_desc").slideUp()
 
   toggle_each_desc: (e) ->
-    console.log "togle each"
     $(e.target).closest('.each_ticket').find(".ticket_desc").slideToggle()
 
 
@@ -72,7 +71,6 @@ class Worksummarizer.Views.Home.TicketsView extends Backbone.View
 
 
   check_active_user_content = (that)->
-    console.log "ticket view function"
     if that 
       $(that).toggleClass("active")
     if $(".user_info.active").length == 0 
