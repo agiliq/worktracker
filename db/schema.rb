@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106183656) do
+ActiveRecord::Schema.define(:version => 20130107104946) do
 
   create_table "api_provider_users", :force => true do |t|
     t.string   "id_from_provider"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(:version => 20130106183656) do
     t.string   "picture"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "custom_users", :force => true do |t|
+    t.string   "assembla_id"
+    t.string   "github_id"
+    t.string   "picture"
+    t.string   "login"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
