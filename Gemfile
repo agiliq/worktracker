@@ -25,6 +25,8 @@ gem 'rails-backbone'
 gem 'jquery-ui-rails'
 gem 'thin'
 gem 'google_authentication'
+gem 'activeadmin', git:  'git://github.com/gregbell/active_admin.git'
+gem 'meta_search', '>=1.1.0.pre'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

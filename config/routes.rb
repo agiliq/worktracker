@@ -1,4 +1,8 @@
 Worksummarizer::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
     match "/" => "home#index"
     match "/login" => "home#login"
     match "/logout" => "home#logout"
