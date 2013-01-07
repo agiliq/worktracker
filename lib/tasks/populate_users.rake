@@ -5,9 +5,6 @@ namespace :db do
     task :github_users => :environment do
         include HomeHelper
         require ='json'
-        ENV['GITHUB_API_KEY']="15b3f8ec0ed9c25395ca"
-        ENV['GITHUB_API_SECRET']="579e63bda29b9d0af4902c8b4fbbb3fca22c15c6"
-        ENV['GITHUB_ORG'] = 'agiliq'
         url = "https://api.github.com/orgs/#{ENV['GITHUB_ORG']}/members"
         members = get_from_api url, 'GITHUB'
         members = JSON.parse members
