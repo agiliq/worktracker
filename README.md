@@ -23,7 +23,7 @@ as the data is spread over a few places.
 
 Supported Sites
 
-1. Assembla
+1. Assembla (Pull from Assembla branch to use.)
 
 In progress
 
@@ -32,9 +32,13 @@ In progress
 
 ###Usage:
 
+Please pull the code from Assembla branch as it is fully functional (only Assembla is supported).
+
     export ASSEMBLA_API_KEY=''
     export ASSEMBLA_API_SECRET=''
     export WORKTRACKER_AUTH_DOMAIN=''  Ex: agiliq.com
     
 Put the above lines in the bashrc file with approapriate values.
+
+
 
