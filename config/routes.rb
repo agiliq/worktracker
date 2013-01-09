@@ -6,6 +6,12 @@ Worksummarizer::Application.routes.draw do
     get "home/users"
     get "home/tickets"
 
+    match '/admin' => 'custom_admin#index', :as => :admin_home
+    match '/admin/link_remaining/assembla' => 'custom_admin#link_remaining_assembla_users',
+        :as => :link_remaining_assembla_users
+    match '/admin/link_remaining/github' => 'custom_admin#link_remaining_github_users',
+        :as => :link_remaining_github_users
+
 # The priority is based upon order of creation:
 # first created -> highest priority.
 

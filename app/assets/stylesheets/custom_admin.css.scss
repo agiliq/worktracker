@@ -1,0 +1,58 @@
+// Place all the styles related to the CustomAdmin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container { padding:20px; width: 95%; }
+.link_users_select_box {
+    font-family: arial;
+    background-color: #CFCFCF;
+    width: 234px;
+    padding: 25px;
+    height: 175px;
+    border: 1;
+    border-radius: 25px;
+    box-shadow: inset 0px 0px 10px black;
+    color: black;
+}
+
+#link_users_btn {
+    margin-left: 58px;
+    margin-top:10px;
+}
+
+div.assembla_users_custom_box { border: 1px solid #E4E4E4;}
+
+div.github_users_custom_box { border: 1px solid #E4E4E4;}
+
+.custom_box_header {
+    background-image: -webkit-linear-gradient(top, #08C, #04C);
+    width: 100%;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    color: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.border-top-left-right-radius {
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+
+}
+
+.users_list { height: 400px; overflow: auto;}
+
+.user_name {border-bottom: 1px solid  #E4E4E4; padding:5px; }
+.user_name:hover{ cursor: pointer; }
+
+.linked { background-color: #75091A; color: whitesmoke; }
+.selected { background-color: #CF720D; color: white; }
+.custom_box_form { margin-top: 25px; margin-left: 20px; }
+.options {
+    min-height: 30px;
+    margin-left: 20px;
+}
+
+.btn a{ color: white; }
+.btn a:hover{ color: white; }

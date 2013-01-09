@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<% if flash[:notice] %>
+<div class='alert alert-info'>
+    <%= flash[:notice] %>
+</div>
+<% end %>
+<% if flash[:error] %>
+<div class='alert alert-error'>
+    <%= flash[:error] %>
+</div>
+<% end %>
+
+<div class='container'>
+
+<div class='link_users_select_box pull-right'>
+<%= form_tag('', :method => 'post')  %>
+    <div class=''>Select Assembla User</div>
+    <div class=''>
+<select name='assembla_id'>
+    <% for each_user in @assembla_users %>
+        <%  
+            @assembla_user_name = each_user.name
+            if each_user.name == nil
+                @assembla_user_name = each_user.login
+            elsif each_user.name.strip == "" or each_user.name.strip.length == 0
+                @assembla_user_name = each_user.login
+            end
+        %>
+        <% if @linked_assembla_user_ids.include?each_user.id_from_provider
+                @assembla_user_name = "Linked -- #{@assembla_user_name}"
+           else
+               @assembla_user_name =  "Not    -- #{@assembla_user_name}"
+           end
+
+        %>
+        <option value='<%= each_user.id_from_provider %>'><%= @assembla_user_name %></option>
+    <% end %>
+</select>
+</div>
+<div class=''>
+    Select Github Users 
+</div>
+<div class=''>
+<select name='github_id'>
+    <% for each_user in @github_users %>
+        <%  
+            @github_user_name = each_user.name
+            if each_user.name == nil
+                @github_user_name = each_user.login
+            elsif each_user.name.strip == "" or each_user.name.strip.length == 0
+                @github_user_name = each_user.login
+            end
+        %>
+        <% if @linked_github_user_ids.include?each_user.id_from_provider
+                @github_user_name = "Linked -- #{@github_user_name}"
+           else
+               @github_user_name =  "Not    -- #{@github_user_name}"
+           end
+
+        %>
+
+            
+        <option value='<%= each_user.id_from_provider %>'><%= @github_user_name %></option>
+    <% end %>
+</select>
+
+</div>
+<input type='submit' id='link_users_btn' class='btn btn-primary'  value='Link Users' />
+</form>
+</div>
+
+
+<!-- Another format -->
+
+<div class=''>
+    <div class='options'>
+      <span id='cb_toggle_linked' class='cb_option'> Hide Linked users <input type='checkbox'  />
+    </div>  
+    <div class='assembla_users_custom_box span3 border-top-left-right-radius'>
+        <div class='custom_box_header border-top-left-right-radius'><span class='header_text'>Assembla</span></div>
+        <div class='users_list'>
+        <%
+            for each_a_user in @assembla_users 
+                linked_class = ''
+                if @linked_assembla_user_ids.include?each_a_user.id_from_provider
+                    linked_class = 'linked'
+                else
+                    linked_class = 'notlinked'
+                end
+
+                %> <div class='user_name <%= linked_class %>' id_from_provider='<%= each_a_user.id_from_provider %>' ><%= each_a_user.name %> </div> <%
+            end
+
+
+        %>
+        </div> <!-- end of div users_list -->
+    </div>
+    <div class='github_users_custom_box span3 border-top-left-right-radius'>
+        <div class='custom_box_header border-top-left-right-radius' ><span class='header_text'>Github</span></div>
+        <div class='users_list'>
+        <%
+            for each_github_user in @github_users 
+                @github_user_name = each_github_user.name
+                if each_github_user.name == nil
+                    @github_user_name = each_github_user.login
+                elsif each_github_user.name.strip == "" or each_github_user.name.strip.length == 0
+                    @github_user_name = each_user.login
+                end
+                linked_class = ''
+                if @linked_github_user_ids.include?each_github_user.id_from_provider
+                    linked_class = 'linked'
+                else
+                    linked_class = 'notlinked'
+                end
+                %> <div class='user_name <%= linked_class %>' id_from_provider='<%= each_github_user.id_from_provider %>' ><%= @github_user_name %> </div> <%
+            end
+
+
+        %>
+        </div> <!-- end of div users_list -->
+    </div>
+
+
+
+</div>
+<div class='clearfix'></div>
+    <div class='pull-left custom_box_form'>
+        <%= form_tag('', :method => 'post')  %>
+            <input type="hidden" name="assembla_id" value="" />
+            <input type="hidden" name="github_id" value="" />
+            <input type='submit' value='Link Users' id='submit_link_users_custom_box' class='btn btn-primary' />
+        </form>
+    </div>
+
+    <div class='clearfix'></div>
+    <div>
+       <strong>If the linking is completed, there may be some users belonging to only assembla or github. They will be added separately using below buttons. So, after linking every possible user, follow the below settings.</strong>
+       <br>
+       <div><div class='btn btn-danger'><%= link_to 'Yes, linking completed for assembla', link_remaining_assembla_users_path %></div></div><br>
+       <div><div class='btn btn-danger'><%= link_to 'Yes, linking completed for github', link_remaining_github_users_path %></div></div>
+       <br>
+    </div>
+
+
+</div><!-- end of container -->
