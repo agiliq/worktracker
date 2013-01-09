@@ -50,6 +50,7 @@ namespace :db do
         user_ids = []
         new_records = 0
         updated_records = 0
+        
         for each_space in spaces
             url = "https://api.assembla.com/v1/spaces/#{each_space['id']}/users.json"
             space_users = get_from_api url, 'ASSEMBLA'
@@ -61,14 +62,14 @@ namespace :db do
 
                     if user.length == 1
                         user[0].update_attributes('id_from_provider' => space_user['id'],
-                            'login' => space_user['login'], 'picture' => space_user['avatar_url'],
+                            'login' => space_user['login'], 'picture' => space_user['picture'],
                             'name' => space_user['name'], 'api_provider_name' => 'ASSEMBLA')
                         updated_records += 1
 
                         puts "Updating assembla user : #{space_user['login']}"
                     elsif user.length == 0
                         ApiProviderUser.new('id_from_provider' => space_user['id'],
-                            'login' => space_user['login'], 'picture' => space_user['avatar_url'],
+                            'login' => space_user['login'], 'picture' => space_user['picture'],
                             'name' => space_user['name'], 'api_provider_name' => 'ASSEMBLA').save()
                         new_records += 1
                         puts "Creating assembla user : #{space_user['login']}"
